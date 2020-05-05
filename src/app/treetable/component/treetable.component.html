@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="dataSource" [ngClass]="formatElevation()">
 
-  <div *ngFor="let column of displayedColumns; first as isFirst;">
+  <div *ngFor="let column of displayedColumns; let idx=index; first as isFirst;">
     <ng-container matColumnDef="{{column}}">
       <th mat-header-cell *matHeaderCellDef [ngClass]="{'vertical-separator': options.verticalSeparator}">
         {{options.capitalisedHeader ? (column | titlecase) : column}}
@@ -12,10 +12,22 @@
             <mat-icon [ngStyle]="{'visibility': element.children.length ? 'visible' : 'hidden'}" (click)="onNodeClick(element)">
               {{element.isExpanded ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}}
             </mat-icon>
+            <span *ngIf="options && options.customColumnCheckBox && options.customColumnCheckBox[idx]">
+              <mat-checkbox class="icon-margin"></mat-checkbox> 
+            </span>
+            <span *ngIf="options && options.customColumnIcon && options.customColumnIcon[idx]">
+              <mat-icon class="icon-margin">{{options.customColumnIcon[idx]}}</mat-icon> 
+            </span>                   
             <div>{{element.value[column]}}</div>
           </div>
         </div>
-        <div *ngIf="!isFirst">
+        <div *ngIf="!isFirst" class="value-cell">
+          <span *ngIf="options && options.customColumnCheckBox && options.customColumnCheckBox[idx]">
+            <mat-checkbox class="icon-margin"></mat-checkbox> 
+          </span>
+          <span *ngIf="options && options.customColumnIcon && options.customColumnIcon[idx]">
+            <mat-icon class="icon-margin">{{options.customColumnIcon[idx]}}</mat-icon>
+          </span>
           {{element.value[column]}}
         </div>
       </td>

@@ -24,6 +24,8 @@ export interface Options<T> {
   capitalisedHeader?: boolean;
   highlightRowOnHover?: boolean;
   customColumnOrder?: Array<keyof T> & string[];
+  customColumnIcon?: Array<keyof T> & string[];
+  customColumnCheckBox?: Array<keyof T> & string[];
   elevation?: number;
   isExpanded?: boolean;
 }

@@ -21,7 +21,9 @@
 </div>
 
 <h2>Tree as Single Root Node</h2>
-<treetable [tree]="singleRootTree" [options]="{isExpanded: false}"></treetable>
+<treetable [tree]="singleRootTree" [options]="{isExpanded: false, customColumnIcon: [ 'folder', 'person',''], 
+  customColumnCheckBox: [ 'true', 'true','']}"></treetable>
 
 <h2>Tree as Array of Nodes</h2>
-<treetable [tree]="arrayOfNodesTree"></treetable>
+<treetable [tree]="arrayOfNodesTree"[options]="{isExpanded: false, customColumnIcon: [ 'folder', '','person'], 
+customColumnCheckBox: [ 'true', '','']}"></treetable>

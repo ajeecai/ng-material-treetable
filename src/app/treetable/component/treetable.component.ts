@@ -44,9 +44,22 @@ export class TreetableComponent<T> implements OnInit {
         Properties ${customOrderValidator.xor.map(x => `'${x}'`).join(', ')} incorrect or missing in customColumnOrder`
       );
     }
+    const customIconValidator = this.validatorService.validateCustomIcon<T, Node<T>>(root, this.options.customColumnIcon);
+    if (this.options.customColumnIcon && !customIconValidator.valid) {
+      throw new Error(`
+        Properties ${customIconValidator.xor.map(x => `'${x}'`).join(', ')} incorrect or missing in customColumnIcon`
+      );
+    }
+    const customCheckBoxValidator = this.validatorService.validateCustomCheckBox<T, Node<T>>(root, this.options.customColumnCheckBox);
+    if (this.options.customColumnCheckBox && !customCheckBoxValidator.valid) {
+      throw new Error(`
+        Properties ${customCheckBoxValidator.xor.map(x => `'${x}'`).join(', ')} incorrect or missing in customColumnCheckBox`
+      );
+    }
     this.displayedColumns = this.options.customColumnOrder
       ? this.options.customColumnOrder
       : this.extractNodeProps(this.tree[0]);
+      
     this.searchableTree = this.tree.map(t => this.converterService.toSearchableTree(t));
     const treeTableTree = this.searchableTree.map(st => this.converterService.toTreeTableTree(st, this.options));
     this.treeTable = flatMap(treeTableTree, this.treeService.flatten);

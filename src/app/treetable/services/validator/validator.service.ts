@@ -15,4 +15,19 @@ export class ValidatorService {
     };
   }
 
+  validateCustomIcon<T, K extends Node<T>>(node: K, customColumnIcon: Array<keyof T> & string[]): { valid: boolean, xor: string[] } {
+    // check it as you like
+    return {
+      valid: true,
+      xor:[]
+    }
+  }
+
+  validateCustomCheckBox<T, K extends Node<T>>(node: K, customColumnCheckBox: Array<keyof T> & string[]): { valid: boolean, xor: string[] } {
+    // check it as you like
+    return {
+      valid: true,
+      xor:[]
+    }
+  }
 }
