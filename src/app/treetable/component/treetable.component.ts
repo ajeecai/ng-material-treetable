@@ -67,6 +67,10 @@ export class TreetableComponent<T> implements OnInit {
     this.foldTree();
   }
 
+  isFunction(val :any): boolean {
+    return typeof val === 'function';
+  }
+
   extractNodeProps(tree: Node<T> & { value: { [k: string]: any } }): string[] {
     return Object.keys(tree.value).filter(x => typeof tree.value[x] !== 'object');
   }

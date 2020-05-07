@@ -16,7 +16,14 @@
               <mat-checkbox class="icon-margin"></mat-checkbox> 
             </span>
             <span *ngIf="options && options.customColumnIcon && options.customColumnIcon[idx]">
-              <mat-icon class="icon-margin">{{options.customColumnIcon[idx]}}</mat-icon> 
+              <mat-icon  *ngIf="isFunction(options.customColumnIcon[idx]); else notFunc"
+                class="icon-margin">{{options.customColumnIcon[idx](element)}}
+              </mat-icon>
+              <ng-template #notFunc>
+                <mat-icon
+                  class="icon-margin">{{options.customColumnIcon[idx]}}
+                </mat-icon>
+              </ng-template>
             </span>                   
             <div>{{element.value[column]}}</div>
           </div>
