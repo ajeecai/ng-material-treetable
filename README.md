@@ -1,5 +1,21 @@
 # About this repository
 
+This is a fork from pascalhaakmat/ng-material-treetable (see section below), adding more customization for icon and checkbox into each coloum.
+
+This could be done via `customColumnIcon` and `customColumnCheckBox` in options passed to treetable, such as 
+
+```
+<treetable [tree]="singleRootTree" [options]="{isExpanded: false, customColumnIcon: [ myIcon, 'person',''],
+  customColumnCheckBox: [ 'true', 'true','']}"></treetable>
+```
+For icon options, besides string, user defined function such as myIcon could be used to set different icon depending on the node information.
+
+For checkbox, 'true' is not meaning to set checkbox default to checked status. Instead, any not null string means there will be a checkbox.
+
+![Demo](assets/icon_checkbox.PNG)
+
+# About this repository
+
 This is a fork of ng-material-treetable to work with Angular 9.
 
 Until the version in the npm repository works with Angular 9 you can build a tarball from this repository locally:
